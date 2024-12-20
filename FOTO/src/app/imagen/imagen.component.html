@@ -1,0 +1,13 @@
+<div>
+  <input type="text" placeholder="Nombre de la imagen" #nombreInput />
+  <input type="file" (change)="seleccionarImagen($event)" />
+  <button (click)="subirImagen(nombreInput.value)">Subir Imagen</button>
+</div>
+
+<div>
+  <input type="number" placeholder="ID de la imagen" #idInput />
+  <button (click)="obtenerImagen(convertToNumber(idInput.value))">Ver Imagen</button>
+</div>
+
+<!-- Mostrar la imagen obtenida -->
+<img *ngIf="imagenVistaUrl" [src]="imagenVistaUrl" alt="Imagen obtenida" />
