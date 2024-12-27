@@ -8,13 +8,11 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-// Habilitar CORS para todas las solicitudes (puedes configurarlo según tus necesidades)
 app.use(cors());
 
 // Configuración de Multer para manejar archivos
 const upload = multer({ storage: multer.memoryStorage() });
 
-// Configuración de la base de datos usando variables de entorno
 const dbConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -26,7 +24,6 @@ const dbConfig = {
   },
 };
 
-// Endpoint para subir una imagen
 app.post('/upload', upload.single('imagen'), async (req, res) => {
   try {
     if (!req.file) {
@@ -50,7 +47,6 @@ app.post('/upload', upload.single('imagen'), async (req, res) => {
   }
 });
 
-// Endpoint para obtener una imagen
 app.get('/imagen/:id', async (req, res) => {
   try {
     const pool = await sql.connect(dbConfig);
@@ -76,7 +72,6 @@ app.get('/imagen/:id', async (req, res) => {
 });
 
 
-// Endpoint para actualizar una imagen
 app.put('/upload/:id', upload.single('imagen'), async (req, res) => {
   try {
     const { id } = req.params;
@@ -104,7 +99,6 @@ app.put('/upload/:id', upload.single('imagen'), async (req, res) => {
   }
 });
 
-// Endpoint para eliminar una imagen
 app.delete('/imagen/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -126,7 +120,6 @@ app.delete('/imagen/:id', async (req, res) => {
   }
 });
 
-// Iniciar el servidor
 const PORT = process.env.PORT || 5000;  // Cambiar el puerto a 5000 si no lo habías hecho
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

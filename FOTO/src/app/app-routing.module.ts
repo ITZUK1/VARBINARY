@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ImagenComponent } from './pages/components/imagen/imagen.component'; // Cambia esta importación si tienes otro componente
+import { ImagenComponent } from './pages/components/imagen/imagen.component'; 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/imagen', pathMatch: 'full' }, // Redirige a la ruta principal
-  { path: 'imagen', component: ImagenComponent }, // Ruta para el componente de imagen
-  // Agrega más rutas si tienes más componentes
+  { path: '', redirectTo: '/imagen', pathMatch: 'full' }, 
+  { path: 'imagen', component: ImagenComponent }, 
 ];
 
 @NgModule({
